@@ -13,6 +13,9 @@ class AreaCalculator
     foreach ($this->shapes as $shape) {
       // Check if an object is an instance of a class
       // if (is_a($shape, 'Square')) {
+      // Ở đây ta dùng condition để chia case và tính area của từng shape riêng trong 1 class chung
+      // Điều này không tốt vì nếu có thêm shape mới, ta phải thêm case mới vào class này, vi phạm Open/Closed Principle
+      // Vì thế nến tạo hàm area cho từng shape
       if ($shape instanceof Square) {
         // Push an item to the end of an array
         $area[] = pow($shape->length, 2);
@@ -23,17 +26,6 @@ class AreaCalculator
     // Calculate the sum of values in an array
     return array_sum($area);
   }
-
-  public function output()
-  {
-    // Join array elements with a string (like join() in Python)
-    return implode('', [
-      '',
-      'Sum of the areas of provided shapes: ',
-      $this->sum(),
-      '',
-    ]);
-  }
 }
 
 $shapes = [
@@ -43,4 +35,7 @@ $shapes = [
 ];
 
 $areas = new AreaCalculator($shapes);
-echo $areas->output();
+$output = new SumCalculatorOutputter($areas);
+
+echo $output->JSON();
+echo $output->HTML();
