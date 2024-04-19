@@ -16,11 +16,22 @@ class AreaCalculator
       // Ở đây ta dùng condition để chia case và tính area của từng shape riêng trong 1 class chung
       // Điều này không tốt vì nếu có thêm shape mới, ta phải thêm case mới vào class này, vi phạm Open/Closed Principle
       // Vì thế nến tạo hàm area cho từng shape
-      if ($shape instanceof Square) {
-        // Push an item to the end of an array
-        $area[] = pow($shape->length, 2);
-      } elseif ($shape instanceof Circle) {
-        $area[] = pi() * pow($shape->radius, 2);
+      // if ($shape instanceof Square) {
+      //   // Push an item to the end of an array
+      //   $area[] = pow($shape->length, 2);
+      // } elseif ($shape instanceof Circle) {
+      //   $area[] = pi() * pow($shape->radius, 2);
+      // }
+
+      // Tuy nhiên có 1 vấn đề nữa
+      // Không thể đảm bảo bất kì obj $shape nào cũng có method area()
+      // Nên ta cần tạo interface ShapeInterface
+      foreach ($this->shapes as $shape) {
+        if ($shape instanceof ShapeInterface) {
+          $area[] = $shape->area();
+        } else {
+          throw new Exception('Invalid shape found');
+        }
       }
     }
     // Calculate the sum of values in an array
