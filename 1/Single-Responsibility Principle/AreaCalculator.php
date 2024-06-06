@@ -3,7 +3,7 @@ class AreaCalculator
 {
   public $shapes;
 
-  public function __construct($shapes = [])
+  public function construct($shapes = [])
   {
     $this->shapes = $shapes;
   }

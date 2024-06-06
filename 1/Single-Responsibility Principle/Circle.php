@@ -4,7 +4,7 @@ class Circle implements ShapeInterface
 {
   public $radius;
 
-  public function construct($radius)
+  public function __constructor($radius)
   {
     $this->radius = $radius;
   }

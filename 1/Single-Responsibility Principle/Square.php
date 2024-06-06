@@ -3,7 +3,7 @@ class Square implements ShapeInterface
 {
     public $length;
 
-    public function construct($length)
+    public function __constructor($length)
     {
         $this->length = $length;
     }
