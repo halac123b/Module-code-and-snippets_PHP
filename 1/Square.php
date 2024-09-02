@@ -8,7 +8,7 @@ class Square implements ShapeInterface
         $this->length = $length;
     }
 
-    // Thay vì tính areaa trong AreaCalculator, ta tạo hàm area riêng cho từng shape
+    // Thay vì tính area trong AreaCalculator, ta tạo hàm area riêng cho từng shape
     // Đảm bảo Open-Close Principle
     public function area()
     {
